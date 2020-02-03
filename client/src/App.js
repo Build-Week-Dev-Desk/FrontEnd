@@ -8,6 +8,8 @@ import PrivateRoute from "./tools/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import LoginForm from "./components/login/LoginForm";
 import NavBar from "./components/NavBar";
+import CreateTicketForm from './components/dashboard/CreateTicketForm';
+import MyTickets from './components/dashboard/MyTickets';
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
         <NavBar />
         <Route path="/login" component={LoginForm} />
         {/* This private route is not working properly yet */}
-        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/mytickets" component={MyTickets} />
+        <Route path="/createticket" component={CreateTicketForm} />
       </div>
     </BrowserRouter>
   );
