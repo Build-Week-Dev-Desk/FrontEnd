@@ -1,12 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import axios from 'axios';
+import axios from 'axios';
 import { useForm } from 'react-hook-form'
 
-const LoginForm = () => {
+const LoginForm = props => {
 
     const { register, handleSubmit } = useForm()
-    const onSubmit = data => { console.log(data) }
+    const onSubmit = data => {
+        axios
+        .post(`http://localhost:5001/api/login`, data)
+        .then(res => {
+            localStorage.setItem('token', res.data.payload)
+            props.history.push('/dashboard')
+        })
+        .catch(err => console.log(err))
+    }
 
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
