@@ -1,37 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+//import axios from 'axios';
+import { useForm } from 'react-hook-form'
 
 const LoginForm = () => {
 
-    const [ credentials, setCredentials ] = useState({})
-
-    const handleChange = e => {
-        setCredentials({
-            [e.target.name] : e.target.value
-        })
-    }
-
-    const handleSubmit = e => {
-        e.preventDefault();
-        axios
-        .post(``, credentials)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
-    }
+    const { register, handleSubmit } = useForm()
+    const onSubmit = data => { console.log(data) }
 
     return(
-        <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <h2>Login to DevDesk</h2>
-            <label>Email: <input type="text" placeholder="Enter Email Address" name="email" onChange={handleChange} /></label>
-            <label>Password: <input type="password" placeholder="Enter Password" name="password" onChange={handleChange} /></label>
-            <button onClick={handleSubmit}>Sign In</button>
+            <label>Email: <input type="text" placeholder="Enter Email Address" name="email" ref={register} /></label>
+            <label>Password: <input type="password" placeholder="Enter Password" name="password" ref={register} /></label>
+            <input type="submit" />
             <Link to="/signup">Sign Up</Link>
-        </div>
+        </form>
     );
 }
 
 export default LoginForm;
-
-//needs to save token
-//needs to forward user to '/dashboard' to match up with the privateroute in app.js
