@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
 //import PrivateRoute from "./tools/PrivateRoute";
 
@@ -12,14 +13,14 @@ import SignupForm from "./components/login/SignupForm";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
         {/* <NavBar /> */}
         <Route exact path="/" component={LoginForm} />
         <Route path="/signup" component={SignupForm} />
         {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

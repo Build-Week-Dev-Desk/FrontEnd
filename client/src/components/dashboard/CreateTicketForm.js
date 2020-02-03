@@ -1,5 +1,7 @@
 //only appears for students
 
+//sample state
+
 // tickets: [{
 //         id: num,
 //         title: 'string',
@@ -16,3 +18,16 @@
 //         }
 //     }]
 //work on this with Seth
+
+
+import React from 'react';
+
+function CreateTicketForm(props) {
+    return (
+        <div>
+            
+        </div>
+    );
+}
+
+export default CreateTicketForm;
