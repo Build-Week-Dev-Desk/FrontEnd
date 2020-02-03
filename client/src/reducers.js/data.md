@@ -3,8 +3,8 @@ const state = {
         id: num,
         student: bool,
         staff: bool,
-        staffMyTickets: [...tickets],
-        studentMyTickets: [...tickets],
+        staffTickets: [...tickets],
+        studentTickets: [...tickets],
         email: 'string',
         name: 'string',
         timeCreated: date
@@ -15,7 +15,7 @@ const state = {
         title: 'string',
         status: 'one of [open, claimed, resolved]',
         description: 'string',
-        attemptedSolutions: [],
+        attemptedSolutions: 'string',
         category: 'one of [html, css, javascript, python]',
         asker: user.name,
         timeCreated: date,
@@ -25,5 +25,4 @@ const state = {
             answerer: user.name
         }
     }]
-
 }
