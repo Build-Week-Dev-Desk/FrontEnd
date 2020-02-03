@@ -8,17 +8,21 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 //components
 //import Dashboard from "./components/dashboard/Dashboard";
 import LoginForm from "./components/login/LoginForm";
-import SignupForm from "./components/login/SignupForm";
-//import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar";
+import CreateTicketForm from './components/dashboard/CreateTicketForm';
+import MyTickets from './components/dashboard/MyTickets';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        {/* <NavBar /> */}
-        <Route exact path="/" component={LoginForm} />
+        <NavBar />
+        <Route path="/login" component={LoginForm} />
+        {/* This private route is not working properly yet */}
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/mytickets" component={MyTickets} />
+        <Route path="/createticket" component={CreateTicketForm} />
         <Route path="/signup" component={SignupForm} />
-        {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
       </div>
     </BrowserRouter>
   );
