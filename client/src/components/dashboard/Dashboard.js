@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import axios from "axios";
+
 
 //components
 import Ticket from "./Ticket";
@@ -49,9 +50,39 @@ const state = {
 };
 
 const Dashboard = props => {
+  const [tickets, setTickets] = useState([])
+  const [editTicket, setEditTicket] = useState({})
+  
+  useEffect(() => {
+    axios
+      .get('url')
+      .then(res => {
+        setTicket(res.data)
+      })
+      .catch(err => console.log(err))
+  }, [])
   const claimTicket = (e) => {
     //needs to add itself to the user's staffTicket's array
     //also needs to make put request and update the claimed prop of the item
+
+    const filteredTickets = tickets.filter(item => {
+      return item.id === e.target.id
+    })
+
+    setEditTicket({...filteredTickets, status: 'claimed'})
+    axiosWithAuth().put(`url/tickets/${e.target.id}`, editTicket)
+      .then(res => {
+        axiosWithAuth().put('url', {...user, staffTickets: [user.staffTickets, editTicket.id]})
+          .then (res => {
+            console.log(res)
+          })
+          .catch(err => {
+            console.log(err)
+          })
+      })
+      .catch(err => {
+        console.log(err)
+      })
   };
   const unclaimTicket = e => {
     //needs to toggle the classname of the selected item to be open

@@ -41,11 +41,11 @@ function Ticket(props) {
       )}
       {/* button section should only appear if user is staff */}
       <div className="button-container">
-        <button onClick={props.deleteTicket}>Delete </button>
-        <button onClick={props.claimTicket}>Claim</button>
+        <button id={props.ticket.id} onClick={props.deleteTicket}>Delete </button>
+        <button id={props.ticket.id} onClick={props.claimTicket}>Claim</button>
         {/* unclaim and complete should only appear if ticket is claimed by current user */}
-        <button onClick={props.unclaimTicket}>Unclaim</button>
-        <button onClick={props.completeTicket}> Complete</button>
+        <button id={props.ticket.id} onClick={props.unclaimTicket}>Unclaim</button>
+        <button id={props.ticket.id} onClick={props.completeTicket}> Complete</button>
       </div>
     </div>
   );
