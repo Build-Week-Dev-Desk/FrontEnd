@@ -1,29 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 const SignupForm = () => {
 
-    const handleChange = () => {
+    const { register, handleSubmit } = useForm()
+    const onSubmit = data => { console.log(data) }
 
-    }
-
-    const handleSubmit = e => {
-        e.preventDefault();
-    }
     return(
-        <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <h2>Sign Up to Dev Desk</h2>
-            <label>Email Address:<input type="text" placeholder="Enter Email Address" name="email" onChange={handleChange} /></label>
-            <label>Password:<input type="password" placeholder="Enter Email Address" name="password" onChange={handleChange} /></label>
-            <label>Confirm Password:<input type="password" placeholder="Enter Email Address" name="confirmpassword" onChange={handleChange} /></label>
-            <select>
-                <option>Staff</option>
-                <option>Student</option>
-                <option>Staff &amp; Student</option>
-            </select>
-            <button onClick={handleSubmit}>Sign Up</button>
+            <label>Email Address:<input type="text" placeholder="Enter Email Address" name="email" ref={register} /></label>
+            <label>Password:<input type="password" placeholder="Enter Email Address" name="password" ref={register} /></label>
+            <label>Confirm Password:<input type="password" placeholder="Enter Email Address" name="confirmpassword" ref={register} /></label>
+            <label>Pick Your Group:
+                <select name="group" ref={register}>
+                    <option value="staff">Staff</option>
+                    <option value="student">Student</option>
+                    <option value="both">Staff &amp; Student</option>
+                </select>
+            </label>
+            <button>Sign Up</button>
             <Link to="/">Sign In</Link>
-        </div>
+        </form>
     )
 }
 
