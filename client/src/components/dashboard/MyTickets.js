@@ -1,8 +1,13 @@
-import MyTicketsStaff from './MyTicketsStaff';
-import MyTicketsStudent from './MyTicketsStudent';
+import React from 'react';
 
 const MyTickets = () => {
     
+    return(
+        <>
+            {/* {state.user.student && (state.user.studentTickets.length > 0) && <MyTicketsStudent/>}
+            {state.user.staff && (state.user.stafftickets.length > 0) && <MyTicketsStaff/>} */}
+        </>
+    )
 }
 
 export default MyTickets;
