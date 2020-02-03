@@ -1,22 +1,24 @@
 import React from "react";
 import "./App.css";
 
-import { BrowserRouter, Route } from "react-router-dom";
-import PrivateRoute from "./tools/PrivateRoute";
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
+//import PrivateRoute from "./tools/PrivateRoute";
 
 //components
-import Dashboard from "./components/dashboard/Dashboard";
+//import Dashboard from "./components/dashboard/Dashboard";
 import LoginForm from "./components/login/LoginForm";
-import NavBar from "./components/NavBar";
+import SignupForm from "./components/login/SignupForm";
+//import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <NavBar />
-        <Route path="/login" component={LoginForm} />
-        {/* This private route is not working properly yet */}
-        <PrivateRoute path="/dashboard" component={Dashboard} />
+        {/* <NavBar /> */}
+        <Route exact path="/" component={LoginForm} />
+        <Route path="/signup" component={SignupForm} />
+        {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
       </div>
     </BrowserRouter>
   );
