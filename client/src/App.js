@@ -1,8 +1,6 @@
 import React from "react";
 import "./App.css";
-
-
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import PrivateRoute from "./tools/PrivateRoute";
 
 //components
@@ -12,18 +10,17 @@ import SignupForm from "./components/login/SignupForm";
 import NavBar from "./components/NavBar";
 import CreateTicketForm from './components/dashboard/CreateTicketForm';
 import MyTickets from './components/dashboard/MyTickets';
-import Dashboard from './components/dashboard/Dashboard';
-import SignupForm from './components/login/SignupForm';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <NavBar />
+        <Route exact path="/" component={LoginForm} />
         <Route path="/login" component={LoginForm} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/mytickets" component={MyTickets} />
-        <Route path="/createticket" component={CreateTicketForm} />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/mytickets" component={MyTickets} />
+        <PrivateRoute path="/createticket" component={CreateTicketForm} />
         <Route path="/signup" component={SignupForm} />
       </div>
     </Router>

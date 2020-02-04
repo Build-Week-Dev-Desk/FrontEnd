@@ -109,6 +109,8 @@ const Dashboard = props => {
       <div>
         {state.tickets.map(ticket => {
           return (
+            <>
+            I'm the dashboard
             <Ticket
               claimTicket={claimTicket}
               unclaimTicket={unclaimTicket}
@@ -116,6 +118,7 @@ const Dashboard = props => {
               deleteTicket={deleteTicket}
               ticket={ticket}
             />
+            </>
           );
         })}
       </div>
