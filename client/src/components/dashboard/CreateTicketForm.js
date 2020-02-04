@@ -88,12 +88,12 @@ function CreateTicketForm(props) {
                 <div className="ticket">
                 <label htmlFor="solution"><h3>What have you tried:</h3></label>
                     <textarea
-                    id="attemptedSolution"
-                    name="attemptedSolution"
+                    id="solution"
+                    name="solution"
                     // onChange={handleChange} 
                     ref={register({ required: true })}
                     />
-                    {errors.attemptedSolution && errors.attemptedSolution.type === "required" && (<p>This is required</p>)}
+                    {errors.solution && errors.solution.type === "required" && (<p>This is required</p>)}
                 </div>
                 <button className="submitbtn">Submit Ticket</button>              
             </form>

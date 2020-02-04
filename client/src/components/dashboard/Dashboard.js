@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../../tools/axiosWithAuth";
 
+
 //components
 import Ticket from "./Ticket";
 import SolutionSubmitForm from "./SolutionSubmitForm";
@@ -145,6 +146,9 @@ const Dashboard = props => {
 
   return (
     <div>
+      <div className="subnav">
+        <a className="navcreate" href="/createticket">Create New Ticket</a>
+      </div>
       <div className="profile-area">
         <div>Name: {state.user.name}</div>
         <div>Email: {state.user.email}</div>
