@@ -12,10 +12,12 @@ import SignupForm from "./components/login/SignupForm";
 import NavBar from "./components/NavBar";
 import CreateTicketForm from './components/dashboard/CreateTicketForm';
 import MyTickets from './components/dashboard/MyTickets';
+import Dashboard from './components/dashboard/Dashboard';
+import SignupForm from './components/login/SignupForm';
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <div className="App">
         <NavBar />
         <Route path="/login" component={LoginForm} />
@@ -24,7 +26,7 @@ function App() {
         <Route path="/createticket" component={CreateTicketForm} />
         <Route path="/signup" component={SignupForm} />
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 

@@ -21,60 +21,83 @@
 
 
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 function CreateTicketForm(props) {
+    const { register, handleSubmit,  errors } = useForm();
     const [newTicket, setNewTicket ] = useState({});
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        // setup axios post call 
-        // redirect to dashboard or myticketstudent
+    // const handleSubmit = () => {
+    //     console.log(newTicket);
+    //     // setup axios post call 
+    //     // redirect to dashboard or myticketstudent
+    // }
+
+    // const handleChange = e => {
+    //     setNewTicket({
+    //         ...newTicket,
+    //         [e.target.name]: e.target.value
+    //     })
+    // }
+
+    const onSubmit = data => {
+        setNewTicket({
+            ...newTicket, ...data
+        })
     }
 
-    const handleChange = e => {
-        setNewTicket({
-            ...newTicket,
-            [e.target.name]: e.target.value
-        })
-        console.log(newTicket);
-    }
+    console.log(newTicket)
 
     return (
         <div>
-            <h1>Ticket Submission</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Title:
+            <h1 className="ticketsub" >Ticket Submission</h1>
+            <div className='entiretick'>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="ticket">
+                <label htmlFor="title"><h2>Title:</h2></label>
                 <input 
                 id="title"
                 type="text"
                 name="name"
-                onChange={handleChange}
+                // onChange={handleChange}
+                ref={register({ required: true })}
                 />
-                </label>
-                <label htmlFor="description">Description:
+                {errors.name && errors.name.type === "required" && (<p>This is required</p>)}
+                </div>
+                <div className="ticket">
+                <label htmlFor="description"><h3>Description:</h3></label>
                 <textarea
                 id="description"
                 name="description"
-                onChange={handleChange}
+                // onChange={handleChange}
+                ref={register({ required: true })}
                 />
-                </label>
-                <label htmlFor="category">Category:
-                <select name="category" onChange={handleChange}>
+                {errors.description && errors.description.type === "required" && (<p>This is required</p>)}
+                </div>
+                <div className="ticket">
+                <label htmlFor="category"><h3>Category:</h3></label>
+                <select name="category"  ref={register({ required: true })}>
+                    <option value="">Select...</option>
                     <option value="html">Html</option>
                     <option value="css">CSS</option>
                     <option value="javascript">Javascript</option>
                     <option value="python">Python</option>
                 </select>
-                </label>
-                <label>What have you tried:
+                {errors.category && errors.category.type === "required" && (<p>This is required</p>)}
+                </div>
+                <div className="ticket">
+                <label htmlFor="solution"><h3>What have you tried:</h3></label>
                     <textarea
                     id="attemptedSolution"
                     name="attemptedSolution"
-                    onChange={handleChange} 
+                    // onChange={handleChange} 
+                    ref={register({ required: true })}
                     />
-                </label>
-                <button>Submit Ticket</button>              
+                    {errors.attemptedSolution && errors.attemptedSolution.type === "required" && (<p>This is required</p>)}
+                </div>
+                <button className="submitbtn">Submit Ticket</button>              
             </form>
+            </div>
         </div>
     );
 }
