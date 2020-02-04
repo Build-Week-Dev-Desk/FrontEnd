@@ -155,6 +155,7 @@ const Dashboard = props => {
         {state.tickets.map(ticket => {
           return (
             <>
+
               I'm the dashboard
               <Ticket
                 claimTicket={claimTicket}
@@ -162,8 +163,10 @@ const Dashboard = props => {
                 completeTicket={completeTicket}
                 deleteTicket={deleteTicket}
                 ticket={ticket}
+      key={ticket.id}
               />
               {solving && <SolutionSubmitForm ticket={editTicket} user={state.user} setSolving={setSolving}/>}
+
             </>
           );
         })}

@@ -21,7 +21,6 @@ function Ticket(props) {
   //     }
   // }
 
-
   return (
     // <div>I'm gonna be the ticket eventually</div>
 
