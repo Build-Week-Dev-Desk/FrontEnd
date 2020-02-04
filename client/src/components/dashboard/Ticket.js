@@ -28,7 +28,7 @@ function Ticket(props) {
       <div className="userticket">
       <h1>{props.ticket.title}</h1>
       <p>Asked By: {props.ticket.asker}</p>
-      <p>At: {props.ticket.timeCreated}</p>
+      <p>At: {props.ticket.createdAt}</p>
       <p>Status: {props.ticket.status}</p>
       <p>Description: {props.ticket.description}</p>
       <p>What's been tried: {props.ticket.attemptedSolutions}</p>

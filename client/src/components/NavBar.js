@@ -4,7 +4,7 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem,  NavLink } 
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import Axios from 'axios';
 
-function NavBar(props) {
+const NavBar = props => {
     const [ collapsed, setCollapsed ] = useState(true);
 
     const toggleNavbar = () => setCollapsed(!collapsed);
