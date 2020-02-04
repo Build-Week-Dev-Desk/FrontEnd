@@ -50,9 +50,11 @@ function CreateTicketForm(props) {
 
     return (
         <div>
-            <h1>Ticket Submission</h1>
+            <h1 className="ticketsub" >Ticket Submission</h1>
+            <div className='entiretick'>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="title">Title:
+                <div className="ticket">
+                <label htmlFor="title"><h2>Title:</h2></label>
                 <input 
                 id="title"
                 type="text"
@@ -61,8 +63,9 @@ function CreateTicketForm(props) {
                 ref={register({ required: true })}
                 />
                 {errors.name && errors.name.type === "required" && (<p>This is required</p>)}
-                </label>
-                <label htmlFor="description">Description:
+                </div>
+                <div className="ticket">
+                <label htmlFor="description"><h3>Description:</h3></label>
                 <textarea
                 id="description"
                 name="description"
@@ -70,8 +73,9 @@ function CreateTicketForm(props) {
                 ref={register({ required: true })}
                 />
                 {errors.description && errors.description.type === "required" && (<p>This is required</p>)}
-                </label>
-                <label htmlFor="category">Category:
+                </div>
+                <div className="ticket">
+                <label htmlFor="category"><h3>Category:</h3></label>
                 <select name="category"  ref={register({ required: true })}>
                     <option value="">Select...</option>
                     <option value="html">Html</option>
@@ -80,18 +84,20 @@ function CreateTicketForm(props) {
                     <option value="python">Python</option>
                 </select>
                 {errors.category && errors.category.type === "required" && (<p>This is required</p>)}
-                </label>
-                <label>What have you tried:
+                </div>
+                <div className="ticket">
+                <label htmlFor="solution"><h3>What have you tried:</h3></label>
                     <textarea
                     id="attemptedSolution"
                     name="attemptedSolution"
                     // onChange={handleChange} 
                     ref={register({ required: true })}
                     />
-                    {errors.attemptedSolution && errors.attemptedSolution === "required" && (<p>This is required</p>)}
-                </label>
-                <button>Submit Ticket</button>              
+                    {errors.attemptedSolution && errors.attemptedSolution.type === "required" && (<p>This is required</p>)}
+                </div>
+                <button className="submitbtn">Submit Ticket</button>              
             </form>
+            </div>
         </div>
     );
 }
