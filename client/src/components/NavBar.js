@@ -25,7 +25,7 @@ function NavBar(props) {
                                     <NavLink href="/mytickets"><h3>My Tickets</h3></NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink href="/createticket"><h3>Ask For Help</h3></NavLink> 
+                                    <NavLink href="/createticket"><h3>Create New Ticket</h3></NavLink> 
                                 </NavItem>
                             </Nav>
                         </Collapse>

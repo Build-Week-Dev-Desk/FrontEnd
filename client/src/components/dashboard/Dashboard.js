@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import axios from "axios";
 
 
+
 //components
 import Ticket from "./Ticket";
 
@@ -100,6 +101,9 @@ const Dashboard = props => {
 
   return (
     <div>
+      <div className="subnav">
+        <a className="navcreate" href="/createticket">Create New Ticket</a>
+      </div>
       <div className="profile-area">
         <div>Name: {state.user.name}</div>
         <div>Email: {state.user.email}</div>

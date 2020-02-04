@@ -17,13 +17,16 @@ const LoginForm = props => {
     }
 
     return(
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <h2>Login to DevDesk</h2>
-            <label>Email: <input type="text" placeholder="Enter Email Address" name="email" ref={register} /></label>
-            <label>Password: <input type="password" placeholder="Enter Password" name="password" ref={register} /></label>
-            <input type="submit" />
-            <Link to="/signup">Sign Up</Link>
+        <div className="loginpage">
+            <h1 className="logintitle">Login to DevDesk</h1>
+        <form className="loginpage" onSubmit={handleSubmit(onSubmit)}>
+            
+            <label className="email"><h3>Email:</h3> <input type="text" placeholder="Enter Email Address" name="email" ref={register} /></label>
+            <label className="password"><h3>Password:</h3> <input type="password" placeholder="Enter Password" name="password" ref={register} /></label>
+            <input className="submitbtn" type="submit" />
+            <Link className="submitbtn" to="/signup">Sign Up</Link>
         </form>
+        </div>
     );
 }
 
