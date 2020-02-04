@@ -7,7 +7,7 @@ import Ticket from './Ticket'
 const MyTicketsStudent = props => {
     return (
         <main>
-            <h2>My Tickets</h2>
+            <h1 className="claimedtick">My Tickets</h1>
             {props.state.tickets.map(ticket => (
                 <Ticket ticket={ticket} key={ticket.id}/>
             ))}

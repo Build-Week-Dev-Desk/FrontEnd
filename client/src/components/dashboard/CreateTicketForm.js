@@ -49,7 +49,7 @@ function CreateTicketForm(props) {
     console.log(newTicket)
 
     return (
-        <div>
+        <div className="tickform">
             <h1 className="ticketsub" >Ticket Submission</h1>
             <div className='entiretick'>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -58,7 +58,7 @@ function CreateTicketForm(props) {
                 <input 
                 id="title"
                 type="text"
-                name="name"
+                name="title"
                 // onChange={handleChange}
                 ref={register({ required: true })}
                 />
@@ -86,14 +86,14 @@ function CreateTicketForm(props) {
                 {errors.category && errors.category.type === "required" && (<p>This is required</p>)}
                 </div>
                 <div className="ticket">
-                <label htmlFor="solution"><h3>What have you tried:</h3></label>
+                <label htmlFor="solutions"><h3>What have you tried:</h3></label>
                     <textarea
-                    id="solution"
-                    name="solution"
+                    id="solutions"
+                    name="solutions"
                     // onChange={handleChange} 
                     ref={register({ required: true })}
                     />
-                    {errors.solution && errors.solution.type === "required" && (<p>This is required</p>)}
+                    {errors.solutions && errors.solutions.type === "required" && (<p>This is required</p>)}
                 </div>
                 <button className="submitbtn">Submit Ticket</button>              
             </form>
