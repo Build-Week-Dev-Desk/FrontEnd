@@ -10,6 +10,7 @@ import SignupForm from "./components/login/SignupForm";
 import NavBar from "./components/NavBar";
 import CreateTicketForm from './components/dashboard/CreateTicketForm';
 import MyTickets from './components/dashboard/MyTickets';
+import Logout from './components/login/Logout';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
         <PrivateRoute path="/mytickets" component={MyTickets} />
         <PrivateRoute path="/createticket" component={CreateTicketForm} />
         <Route path="/signup" component={SignupForm} />
+        <Route path="/logout" component={Logout} />
       </div>
     </Router>
   );
