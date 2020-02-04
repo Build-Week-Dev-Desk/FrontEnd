@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const axiosWithAuth = () => {
+ const axiosWithAuth = () => {
   return axios.create({
     // config object
     baseURL: 'http://localhost:5001',
@@ -9,3 +9,5 @@ export const axiosWithAuth = () => {
     }
   });
 };
+
+export default axiosWithAuth

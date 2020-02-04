@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import axios from "axios";
-
+import React, { useState, useEffect } from "react";
+import axiosWithAuth from "../../tools/axiosWithAuth";
 
 //components
 import Ticket from "./Ticket";
+import SolutionSubmitForm from "./SolutionSubmitForm";
 
 //this needs to be taken out once there is a backend
 const state = {
@@ -50,48 +50,93 @@ const state = {
 };
 
 const Dashboard = props => {
-  const [tickets, setTickets] = useState([])
-  const [editTicket, setEditTicket] = useState({})
-  
-  // useEffect(() => {
-  //   axios
-  //     .get('url')
-  //     .then(res => {
-  //       setTicket(res.data)
-  //     })
-  //     .catch(err => console.log(err))
-  // }, [])
-  const claimTicket = (e) => {
-  //   //needs to add itself to the user's staffTicket's array
-  //   //also needs to make put request and update the claimed prop of the item
+  const [tickets, setTickets] = useState([]);
+  const [editTicket, setEditTicket] = useState({});
+  const [solving, setSolving] = useState(false);
 
-  //   const filteredTickets = tickets.filter(item => {
-  //     return item.id === e.target.id
-  //   })
+  useEffect(() => {
+    axiosWithAuth()
+      .get("https://bwdevdesk.herokuapp.com/api/tickets")
+      .then(res => {
+        console.log(res);
+        setTickets(res.data);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
-  //   setEditTicket({...filteredTickets, status: 'claimed'})
-  //   axiosWithAuth().put(`url/tickets/${e.target.id}`, editTicket)
-  //     .then(res => {
-  //       axiosWithAuth().put('url', {...user, staffTickets: [user.staffTickets, editTicket.id]})
-  //         .then (res => {
-  //           console.log(res)
-  //         })
-  //         .catch(err => {
-  //           console.log(err)
-  //         })
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
+  const claimTicket = e => {
+    // needs to make put request and update the status prop of the item
+    const filteredTickets = tickets.filter(item => {
+      return item.id === e.target.id;
+    });
+    setEditTicket({ ...filteredTickets, status: "claimed" });
+    axiosWithAuth()
+      .put(`url/tickets/${e.target.id}`, editTicket)
+      .then(res => {
+        //needs to add itself to the user's staffTicket's array
+        axiosWithAuth()
+          .put("url", {
+            ...state.user,
+            staffTickets: [state.user.staffTickets, editTicket.id]
+          })
+          .then(res => {
+            console.log(res);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
+
   const unclaimTicket = e => {
-    //needs to toggle the classname of the selected item to be open
-    //needs to remove itself from the user's staffTicket's array
-    //also needs to make put request and update the claimed prop of the item
+    // needs to make put request and update the status prop of the item
+    const filteredTickets = tickets.filter(item => {
+      return item.id === e.target.id;
+    });
+    setEditTicket({ ...filteredTickets, status: "open" });
+    axiosWithAuth()
+      .put(`url/tickets/${e.target.id}`, editTicket)
+      .then(res => {
+        console
+          .log(res)
+          //needs to add itself to the user's staffTicket's array
+          .then(res => {
+            //needs to remove itself from the user's staffTicket's array
+            const newStaffTickets = [
+              state.user.staffTickets.filter(item => {
+                return item.id !== e.target.id;
+              })
+            ];
+            axiosWithAuth()
+              .put("url", { ...state.user, staffTickets: newStaffTickets })
+              .then(res => {
+                console.log(res);
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      })
+      .catch(err => console.log(err));
   };
-  const completeTicket = () => {
-    //needs to toggle the classname of the selected item to be completed
-    //needs to update the solution prop from null to a solution object with timeCreated,body and answerer props
+  
+  const completeTicket = e => {
+     
+    // needs to make put request and update the status prop of the item
+    const filteredTickets = tickets.filter(item => {
+      return item.id === e.target.id;
+    });
+    setEditTicket({ ...filteredTickets, status: "open" });
+
+    
+    //needs to render the solution form with ticket, user, and setSolving props 
+    setSolving(true);
   };
 
   const deleteTicket = () => {
@@ -110,17 +155,19 @@ const Dashboard = props => {
         {state.tickets.map(ticket => {
           return (
             <>
-            I'm the dashboard
-            <Ticket
-              claimTicket={claimTicket}
-              unclaimTicket={unclaimTicket}
-              completeTicket={completeTicket}
-              deleteTicket={deleteTicket}
-              ticket={ticket}
-            />
+              I'm the dashboard
+              <Ticket
+                claimTicket={claimTicket}
+                unclaimTicket={unclaimTicket}
+                completeTicket={completeTicket}
+                deleteTicket={deleteTicket}
+                ticket={ticket}
+              />
+              {solving && <SolutionSubmitForm ticket={editTicket} user={state.user} setSolving={setSolving}/>}
             </>
           );
         })}
+        
       </div>
     </div>
   );
