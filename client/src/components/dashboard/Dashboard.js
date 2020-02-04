@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import axios from "axios";
+import React from "react";
+//import axios from "axios";
 
 
 //components
@@ -50,8 +50,8 @@ const state = {
 };
 
 const Dashboard = props => {
-  const [tickets, setTickets] = useState([])
-  const [editTicket, setEditTicket] = useState({})
+  //const [tickets, setTickets] = useState([])
+  //const [editTicket, setEditTicket] = useState({})
   
   // useEffect(() => {
   //   axios
@@ -117,6 +117,7 @@ const Dashboard = props => {
               completeTicket={completeTicket}
               deleteTicket={deleteTicket}
               ticket={ticket}
+              key={ticket.id}
             />
             </>
           );

@@ -21,7 +21,7 @@ function App() {
     } else {
       setLoggedIn(true)
     }
-  })
+  }, [])
 
 
   console.log(loggedIn)
