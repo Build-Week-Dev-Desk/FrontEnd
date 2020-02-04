@@ -125,26 +125,18 @@ const Dashboard = props => {
       })
       .catch(err => console.log(err));
   };
-
+  
   const completeTicket = e => {
-     setSolving(true);
+     
     // needs to make put request and update the status prop of the item
     const filteredTickets = tickets.filter(item => {
       return item.id === e.target.id;
     });
     setEditTicket({ ...filteredTickets, status: "open" });
-    axiosWithAuth()
-      .put(`url/tickets/${e.target.id}`, {...editTicket})
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => console.log(err))
-    
-    //needs to update the solution prop from null to a solution object with timeCreated,body and answerer props
-    //needs to render the solution form with ticket, user, and setSolving props 
-   
 
     
+    //needs to render the solution form with ticket, user, and setSolving props 
+    setSolving(true);
   };
 
   const deleteTicket = () => {
@@ -171,9 +163,11 @@ const Dashboard = props => {
                 deleteTicket={deleteTicket}
                 ticket={ticket}
               />
+              {solving && <SolutionSubmitForm ticket={editTicket} user={state.user} setSolving={setSolving}/>}
             </>
           );
         })}
+        
       </div>
     </div>
   );
