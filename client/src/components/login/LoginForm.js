@@ -13,6 +13,7 @@ const LoginForm = props => {
             localStorage.setItem('token', res.data.payload)
             props.history.push('/dashboard')
             props.setLoggedIn(true)
+            props.setState(res)
         })
         .catch(err => console.log(err))
     }
