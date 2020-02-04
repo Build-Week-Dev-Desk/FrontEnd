@@ -11,7 +11,7 @@ const MyTicketsStaff = props => {
   // map should be replaced with filter
   return(
     <main>
-      <h2>Claimed Tickets</h2>
+      <h1 className="claimedtick">Claimed Tickets</h1>
       {props.state.tickets.map(ticket => (
         <Ticket ticket={ticket} key={ticket.id}/>
       ))}
