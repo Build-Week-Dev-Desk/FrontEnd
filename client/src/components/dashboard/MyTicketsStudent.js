@@ -4,11 +4,14 @@ import React from 'react';
 
 import Ticket from './Ticket'
 
-function MyTicketsStudent(props) {
+const MyTicketsStudent = props => {
     return (
-        <div>
-            I'm gonna be a list of all the tickets that you asked for help with
-        </div>
+        <main>
+            <h2>My Tickets</h2>
+            {props.state.tickets.map(ticket => (
+                <Ticket ticket={ticket} key={ticket.id}/>
+            ))}
+        </main>
     );
 }
 

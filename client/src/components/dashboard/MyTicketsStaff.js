@@ -3,15 +3,17 @@
 import React from "react";
 import Ticket from "./Ticket";
 
-function MyTicketsStaff(props) {
-  const completeTicket = e => {
+const MyTicketsStaff = props => {
+  //const completeTicket = e => {
     //needs to toggle the classname of the selected item to be completed
     //also needs to make put request and update the completed prop of the item
-  };
+  //};
+  // map should be replaced with filter
   return(
     <main>
-      {props.state.tickets.map(item => (
-        <Ticket />
+      <h2>Claimed Tickets</h2>
+      {props.state.tickets.map(ticket => (
+        <Ticket ticket={ticket} key={ticket.id}/>
       ))}
     </main>
   );
