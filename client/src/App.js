@@ -13,7 +13,7 @@ import NavBar from "./components/NavBar";
 import CreateTicketForm from "./components/dashboard/CreateTicketForm";
 import MyTickets from "./components/dashboard/MyTickets";
 import Logout from './components/login/Logout';
-//import Profile from './components/login/Profile';
+// import Profile from './components/login/Profile';
 
 
 function App() {
@@ -62,6 +62,8 @@ function App() {
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/mytickets" component={MyTickets} />
           <PrivateRoute path="/createticket" component={CreateTicketForm} />
+          <PrivateRoute path="/logout" component={Logout} />
+          {/* <PrivateRoute path="/profile" component={Profile}/> */}
           <Route path="/signup" component={SignupForm} />
         </div>
       </Router>

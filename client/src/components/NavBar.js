@@ -30,6 +30,9 @@ const NavBar = props => {
                                         <NavLink href="/createticket"><h3>Create New Ticket</h3></NavLink> 
                                     </NavItem>
                                     <NavItem>
+                                        <NavLink href="/profile"><h3>Profile</h3></NavLink>
+                                    </NavItem>
+                                    <NavItem>
                                         <NavLink href="/logout" className="logout"><h3>Logout</h3></NavLink>
                                     </NavItem>
                                     </>
