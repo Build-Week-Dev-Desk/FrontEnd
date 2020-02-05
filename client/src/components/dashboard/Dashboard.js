@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axiosWithAuth from "../../tools/axiosWithAuth";
 
 
@@ -20,8 +20,6 @@ const Dashboard = props => {
       })
       .catch(err => console.log(err));
   }, []);
-
-
   
   // const completeTicket = e => {
      
@@ -51,15 +49,13 @@ const Dashboard = props => {
           return (
             <>
               <Ticket
-                // claimTicket={claimTicket}
-                // unclaimTicket={unclaimTicket}
-                // completeTicket={completeTicket}
-                // deleteTicket={deleteTicket}
+               
                 history={props.history}
                 ticket={ticket}
                 key={ticket.id}
               />
              
+
             </>
           );
         })}

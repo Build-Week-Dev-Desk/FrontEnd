@@ -23,11 +23,13 @@ const SignupForm = props => {
             <label>Email Address:<input type="text" placeholder="Enter Email Address" name="email" ref={register} /></label>
             <label>Password:<input type="password" placeholder="Enter Password" name="password" ref={register} /></label>
             {/* <label>Confirm Password:<input type="password" placeholder="Confirm Password" name="confirmpassword" ref={register} /></label> */}
+
                <label>Pick Your Group:
                 <select name="role" ref={register}>
                     <option value="student">Student</option>
                     <option value="staff">Staff</option>
                     <option value="both">Both</option>
+
                 </select>
             </label>
             <button>Sign Up</button>

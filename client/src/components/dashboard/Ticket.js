@@ -60,12 +60,12 @@ function Ticket(props) {
 
     <div id="usertick" className={props.ticket.status}>
       <div className="userticket">
-        <h1>{props.ticket.title}</h1>
-        <p>Asked By: {props.ticket.asker}</p>
-        <p>At: {props.ticket.createdAt}</p>
-        <p>Status: {props.ticket.status}</p>
-        <p>Description: {props.ticket.description}</p>
-        <p>What's been tried: {props.ticket.attemptedSolutions}</p>
+      <h1>{props.ticket.title}</h1>
+      <p>Asked By: {props.ticket.asker}</p>
+      <p>At: {props.ticket.createdAt}</p>
+      <p>Status: {props.ticket.status}</p>
+      <p>Description: {props.ticket.description}</p>
+      <p>What's been tried: {props.ticket.attemptedSolutions}</p>
       </div>
       {props.ticket.solutions && <p>Solution: {props.ticket.solutions}</p>}
       {/* button section should only appear if user is staff */}
