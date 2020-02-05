@@ -63,7 +63,7 @@ const Ticket = props => {
   }
   return (
     // <div>I'm gonna be the ticket eventually</div>
-
+    <div className="cards">
     <div id="usertick" className={props.ticket.status}>
       <div className="userticket">
       <h1>{props.ticket.title}</h1>
@@ -78,37 +78,37 @@ const Ticket = props => {
       <div className="button-container">
         {props.userType === 'both' && (
           <>
-            <button id={props.ticket.id} onClick={deleteTicket}>
+            <button id={props.ticket.id} className="submitbtn1" onClick={deleteTicket}>
             Delete{" "}
             </button>
-            <button id={props.ticket.id} onClick={claimTicket}>
+            <button id={props.ticket.id}  className="submitbtn2" onClick={claimTicket}>
               Claim
             </button>
             {location.pathname === '/mytickets' && (
-              <button id={props.ticket.id} onClick={unclaimTicket}>
+              <button id={props.ticket.id} className="submitbtn3" onClick={unclaimTicket}>
               Unclaim
               </button>
             )}
-            <button id={props.ticket.id} onClick={completeTicket}>
+            <button id={props.ticket.id} className="submitbtn4" onClick={completeTicket}>
               {" "}
               Complete
             </button>
           </>
         )}
         {props.userType === 'staff' && (
-          <>
-            <button id={props.ticket.id} onClick={deleteTicket}>
+         <>
+            <button id={props.ticket.id} className="submitbtn1" onClick={deleteTicket}>
             Delete{" "}
             </button>
-            <button id={props.ticket.id} onClick={claimTicket}>
+            <button id={props.ticket.id}  className="submitbtn2" onClick={claimTicket}>
               Claim
             </button>
             {location.pathname === '/mytickets' && (
-              <button id={props.ticket.id} onClick={unclaimTicket}>
+              <button id={props.ticket.id} className="submitbtn3" onClick={unclaimTicket}>
               Unclaim
               </button>
             )}
-            <button id={props.ticket.id} onClick={completeTicket}>
+            <button id={props.ticket.id} className="submitbtn4" onClick={completeTicket}>
               {" "}
               Complete
             </button>
@@ -119,6 +119,7 @@ const Ticket = props => {
       {solving && (
         <SolutionSubmitForm ticket={props.ticket} setSolving={setSolving} />
       )}
+    </div>
     </div>
   );
 }

@@ -16,8 +16,9 @@ const Profile = props => {
         }
     }, [props.user])
     return (
-        <form className="profile-area">
-            <h2>User Profile</h2>
+
+        <form className="tickform">
+            <h1 className="dashb">Profile</h1>
             <label>Name:<input type="text" value={profile.name} name="name"/></label>
             <label>Email:<input type="text" value={profile.email} name="email" /></label>
             {profile.role == 'student' && <div>I'm a Student</div>}

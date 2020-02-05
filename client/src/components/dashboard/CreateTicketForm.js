@@ -66,7 +66,8 @@ function CreateTicketForm(props) {
 
   return (
     <div className="tickform">
-      <h1 className="ticketsub">Ticket Submission</h1>
+      <h1 className="dashb">Create New Ticket</h1>
+      <div className="createtick">
       <div className="entiretick">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="ticket">
@@ -129,6 +130,7 @@ function CreateTicketForm(props) {
           </div>
           <input type="submit" className="submitbtn" />
         </form>
+        </div>
       </div>
     </div>
   );

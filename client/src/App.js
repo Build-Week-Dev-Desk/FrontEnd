@@ -16,8 +16,8 @@ import Profile from './components/login/Profile';
 function App() {
   const [userType, setUserType] = useState()
   const [loggedIn, setLoggedIn] = useState();
+
   const [ user, setUser] = useState();
-  console.log(user)
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       setLoggedIn(false);
