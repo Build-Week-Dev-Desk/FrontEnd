@@ -13,7 +13,7 @@ const NavBar = props => {
     return (
         <div>
             <Navbar color="solid" style={{backgroundColor: "#7ED321"}} light>
-                <NavbarBrand href="/" className="home"><h2>DevDesk</h2></NavbarBrand>
+                <NavbarBrand href={props.loggedIn ? '/dashboard' : '/'} className="home"><h2>DevDesk</h2></NavbarBrand>
                     <NavbarToggler onClick={toggleNavbar} className="toggle"/>
                         <Collapse isOpen={!collapsed} navbar>
                             <Nav navbar>
