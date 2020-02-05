@@ -45,7 +45,8 @@ function CreateTicketForm(props) {
       ...data,
       status: "open"
     });
-    console.log("im in between", newTicket);
+    // console.log("im in between", newTicket);
+    props.history.push('/dashboard')
   };
 
   useEffect(() => {
