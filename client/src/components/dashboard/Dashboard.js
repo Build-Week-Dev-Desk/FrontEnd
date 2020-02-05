@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../../tools/axiosWithAuth";
 
 
 //components
 import Ticket from "./Ticket";
-import SolutionSubmitForm from "./SolutionSubmitForm";
+
 
 const Dashboard = props => {
   const [tickets, setTickets] = useState([]);
-  const [editTicket, setEditTicket] = useState({});
-  const [solving, setSolving] = useState(false);
+
 
   useEffect(() => {
     axiosWithAuth()

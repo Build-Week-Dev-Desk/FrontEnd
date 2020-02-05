@@ -1,8 +1,8 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import PrivateRoute from "./tools/PrivateRoute";
-import { Context } from "./contexts/context";
+
 
 //components
 import Dashboard from "./components/dashboard/Dashboard";
@@ -29,7 +29,7 @@ function App() {
   // console.log('logged in', loggedIn)
 
   return (
-    <Context.Provider value={state}>
+   
       <Router>
         <div className="App">
           <NavBar loggedIn={loggedIn} />
@@ -41,7 +41,7 @@ function App() {
                 {...props}
                 setLoggedIn={setLoggedIn}
                 loggedIn={loggedIn}
-                setState={setState}
+ 
               />
             )}
           />
@@ -52,7 +52,7 @@ function App() {
                 {...props}
                 setLoggedIn={setLoggedIn}
                 loggedIn={loggedIn}
-                setState={setState}
+              
               />
             )}
           />
@@ -64,7 +64,7 @@ function App() {
           <Route path="/signup" component={SignupForm} />
         </div>
       </Router>
-    </Context.Provider>
+
   );
 }
 
