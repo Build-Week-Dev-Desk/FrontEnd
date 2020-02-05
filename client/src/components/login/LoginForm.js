@@ -27,9 +27,10 @@ const LoginForm = props => {
             <label className="email"><h3>Email:</h3> <input type="text" placeholder="Enter Email Address" name="email" ref={register} /></label>
             <label className="password"><h3>Password:</h3> <input type="password" placeholder="Enter Password" name="password" ref={register} /></label>
             <label>Pick Your Group:
-                <select name="roleId" ref={register}>
-                    <option value="1">Student</option>
-                    <option value="2">Staff</option>
+                <select name="role" ref={register}>
+                    <option value="student">Student</option>
+                    <option value="staff">Staff</option>
+                    <option value="both">Both</option>
                 </select>
             </label>
             <input className="submitbtn" type="submit" />

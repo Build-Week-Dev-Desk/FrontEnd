@@ -9,15 +9,12 @@ import Dashboard from "./components/dashboard/Dashboard";
 import LoginForm from "./components/login/LoginForm";
 import SignupForm from "./components/login/SignupForm";
 import NavBar from "./components/NavBar";
-
 import CreateTicketForm from "./components/dashboard/CreateTicketForm";
 import MyTickets from "./components/dashboard/MyTickets";
-import Logout from './components/login/Logout';
-// import Profile from './components/login/Profile';
-
+import Logout from "./components/login/Logout";
+//import Profile from './components/login/Profile';
 
 function App() {
-  const [state, setState] = useState({});
 
   const [loggedIn, setLoggedIn] = useState();
 
