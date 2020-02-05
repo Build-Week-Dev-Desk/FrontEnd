@@ -49,15 +49,14 @@ const Ticket = props => {
   const completeTicket = e => {
     setSolving(true);
   };
-
+  // console.log(props.history)
   const deleteTicket = e => {
     e.preventDefault()
-    console.log(e.target.id)
+    // console.log(e.target.id)
     axiosWithAuth()
       .delete(`api/tickets/${e.target.id}`)
       .then(res => {
         console.log(res)
-        //props.setTickets(res.data)
         history.push('/dashboard')
       })
       .catch(err => console.log(err))

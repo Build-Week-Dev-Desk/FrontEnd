@@ -3,11 +3,10 @@ import axiosWithAuth from "../../tools/axiosWithAuth";
 
 
 //components
-import Ticket from "./Ticket";
+import Ticket from "./Ticket;
 
 const Dashboard = props => {
   const [tickets, setTickets] = useState([]);
-console.log('dashboard usertype', props.userType)
   useEffect(() => {
     axiosWithAuth()
       .get("https://bwdevdesk.herokuapp.com/api/tickets")
