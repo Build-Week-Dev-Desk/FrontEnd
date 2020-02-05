@@ -1,16 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../../tools/axiosWithAuth";
 
 
 //components
 import Ticket from "./Ticket";
-import SolutionSubmitForm from "./SolutionSubmitForm";
 
 const Dashboard = props => {
   const [tickets, setTickets] = useState([]);
-  const [editTicket, setEditTicket] = useState({});
-  const [solving, setSolving] = useState(false);
-
   useEffect(() => {
     axiosWithAuth()
       .get("https://bwdevdesk.herokuapp.com/api/tickets")
@@ -19,25 +15,8 @@ const Dashboard = props => {
         setTickets(res.data);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [setTickets]);
   
-  // const completeTicket = e => {
-     
-  //   // needs to make put request and update the status prop of the item
-  //   const filteredTickets = tickets.filter(item => {
-  //     return item.id === e.target.id;
-  //   });
-  //   setEditTicket({ ...filteredTickets, status: "open" });
-
-    
-  //   //needs to render the solution form with ticket, user, and setSolving props 
-  //   setSolving(true);
-  // };
-
-  // const deleteTicket = () => {
-  //   //needs to make axios call and delete ticket from backend
-  // };
-
   return (
     <div>
       <h1 className="dashb">Dashboard</h1>
@@ -46,16 +25,16 @@ const Dashboard = props => {
       </div>
       <div>
         {tickets.map(ticket => {
+          console.log(ticket)
+          console.log('dashboard user is logged in as', props.userType)
           return (
             <>
               <Ticket
-               
-                history={props.history}
                 ticket={ticket}
+                setTickets={setTickets}
+                userType={props.userType}
                 key={ticket.id}
               />
-             
-
             </>
           );
         })}

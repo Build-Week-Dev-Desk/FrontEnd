@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React  from "react";
 import { useForm } from "react-hook-form";
 import axiosWithAuth from "../../tools/axiosWithAuth";
+import { useHistory } from 'react-router-dom';
 
-function SolutionSubmitForm(props) {
+const SolutionSubmitForm = props => {
   const { register, handleSubmit, errors } = useForm();
+  let history = useHistory();
   // const [solution, setSolution] = useState({});
 
   //needs to update the solution prop from null to a solution object with timeCreated,body and answerer props
@@ -20,7 +22,7 @@ function SolutionSubmitForm(props) {
           .then(res => {
             console.log(res);
             props.setSolving(false);
-            axiosWithAuth();
+            history.push('/dashboard')
           })
           .catch(err => {
             console.log(err);

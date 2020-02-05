@@ -7,14 +7,15 @@ const LoginForm = props => {
 
     const { register, handleSubmit } = useForm()
     const onSubmit = data => {
-        console.log(data)
         axios
         .post(`https://bwdevdesk.herokuapp.com/api/auth/login`, data)
         .then(res => {
+            console.log(res)
             localStorage.setItem('token', res.data.token)
+            localStorage.setItem('user', res.data.role)
+            localStorage.setItem('id', res.data.id)
             props.history.push('/dashboard')
             props.setLoggedIn(true)
-            props.setState(res)
         })
         .catch(err => console.log(err))
     }
