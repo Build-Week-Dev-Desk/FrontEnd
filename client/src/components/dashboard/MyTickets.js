@@ -62,6 +62,10 @@ const MyTickets = props => {
 
     return (
         <>
+        <div className="subnav">
+        <h1 className="dashb">My Tickets</h1>
+            <a className="navcreate" href="/createticket">Create New Ticket</a>
+        </div>
            {state.map(ticket => (
         <Ticket ticket={ticket} key={ticket.id}/>
       ))}

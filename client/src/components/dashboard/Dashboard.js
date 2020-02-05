@@ -40,7 +40,7 @@ const Dashboard = props => {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <h1 className="dashb">Dashboard</h1>
       <div className="subnav">
         <a className="navcreate" href="/createticket">Create New Ticket</a>
       </div>

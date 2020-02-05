@@ -17,11 +17,13 @@ const SignupForm = props => {
      }
 
     return(
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <h2>Sign Up to Dev Desk</h2>
-            <label>Name:<input type="text" placeholder="Enter Your Name" name="name" ref={register} /></label>
-            <label>Email Address:<input type="text" placeholder="Enter Email Address" name="email" ref={register} /></label>
-            <label>Password:<input type="password" placeholder="Enter Password" name="password" ref={register} /></label>
+        <div className="loginpage">
+            <h2 className="logintitle">Sign Up to Dev Desk</h2>
+            <form className="loginpage" onSubmit={handleSubmit(onSubmit)}>
+            
+            <label><h3>Name:</h3><input type="text" placeholder="Enter Your Name" name="name" ref={register} /></label>
+            <label><h3>Email Address:</h3><input type="text" placeholder="Enter Email Address" name="email" ref={register} /></label>
+            <label><h3>Password:</h3><input type="password" placeholder="Enter Password" name="password" ref={register} /></label>
             {/* <label>Confirm Password:<input type="password" placeholder="Confirm Password" name="confirmpassword" ref={register} /></label> */}
 
                <label>Pick Your Group:
@@ -32,9 +34,10 @@ const SignupForm = props => {
 
                 </select>
             </label>
-            <button>Sign Up</button>
-            <Link to="/">Sign In</Link>
+            <button className="submitbtn">Sign Up</button>
+            <Link className="submitbtn" to="/">Sign In</Link>
         </form>
+        </div>
     )
 }
 

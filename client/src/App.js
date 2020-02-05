@@ -17,6 +17,7 @@ import Logout from "./components/login/Logout";
 function App() {
 
   const [loggedIn, setLoggedIn] = useState();
+  const [state, setState] = useState()
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {

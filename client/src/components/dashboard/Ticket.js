@@ -57,7 +57,7 @@ function Ticket(props) {
   }
   return (
     // <div>I'm gonna be the ticket eventually</div>
-
+    <div className="cards">
     <div id="usertick" className={props.ticket.status}>
       <div className="userticket">
       <h1>{props.ticket.title}</h1>
@@ -70,17 +70,17 @@ function Ticket(props) {
       {props.ticket.solutions && <p>Solution: {props.ticket.solutions}</p>}
       {/* button section should only appear if user is staff */}
       <div className="button-container">
-        <button id={props.ticket.id} onClick={deleteTicket}>
+        <button className="submitbtn1" id={props.ticket.id} onClick={deleteTicket}>
           Delete{" "}
         </button>
-        <button id={props.ticket.id} onClick={claimTicket}>
+        <button className="submitbtn2" id={props.ticket.id} onClick={claimTicket}>
           Claim
         </button>
         {/* unclaim and complete should only appear if ticket is claimed by current user */}
-        <button id={props.ticket.id} onClick={unclaimTicket}>
+        <button className="submitbtn3" id={props.ticket.id} onClick={unclaimTicket}>
           Unclaim
         </button>
-        <button id={props.ticket.id} onClick={completeTicket}>
+        <button className="submitbtn4" id={props.ticket.id} onClick={completeTicket}>
           {" "}
           Complete
         </button>
@@ -88,6 +88,7 @@ function Ticket(props) {
       {solving && (
         <SolutionSubmitForm ticket={props.ticket} setSolving={setSolving} />
       )}
+    </div>
     </div>
   );
 }
