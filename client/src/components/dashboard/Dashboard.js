@@ -3,7 +3,7 @@ import axiosWithAuth from "../../tools/axiosWithAuth";
 
 
 //components
-import Ticket from "./Ticket;
+import Ticket from "./Ticket";
 
 const Dashboard = props => {
   const [tickets, setTickets] = useState([]);
