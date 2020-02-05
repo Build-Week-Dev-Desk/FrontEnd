@@ -13,6 +13,7 @@ const LoginForm = props => {
             console.log(res)
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('user', res.data.role)
+            localStorage.setItem('id', res.data.id)
             props.history.push('/dashboard')
             props.setLoggedIn(true)
         })

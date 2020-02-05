@@ -11,12 +11,13 @@ import NavBar from "./components/NavBar";
 import CreateTicketForm from "./components/dashboard/CreateTicketForm";
 import MyTickets from "./components/dashboard/MyTickets";
 import Logout from "./components/login/Logout";
-//import Profile from './components/login/Profile';
+import Profile from './components/login/Profile';
 
 function App() {
   const [userType, setUserType] = useState()
   const [loggedIn, setLoggedIn] = useState();
-  
+  const [ user, setUser] = useState();
+  console.log(user)
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       setLoggedIn(false);
@@ -29,6 +30,9 @@ function App() {
       setUserType('staff');
     } else if (localStorage.getItem("user") === 'both') {
       setUserType('both')
+    }
+    if (localStorage.getItem('id')) {
+      setUser(localStorage.getItem('id'))
     }
   }, [localStorage.getItem('user')]);
   
@@ -47,6 +51,7 @@ function App() {
                 setLoggedIn={setLoggedIn}
                 loggedIn={loggedIn}
                 setUserType={setUserType}
+                setUser={setUser}
               />
             )}
           />
@@ -58,6 +63,7 @@ function App() {
                 setLoggedIn={setLoggedIn}
                 loggedIn={loggedIn}
                 setUserType={setUserType}
+                setUser={setUser}
               />
             )}
           />
@@ -67,7 +73,7 @@ function App() {
           <PrivateRoute path="/mytickets" component={MyTickets} userType={userType}/>
           <PrivateRoute path="/createticket" component={CreateTicketForm} />
           <PrivateRoute path="/logout" component={Logout} />
-          {/* <PrivateRoute path="/profile" component={Profile}/> */}
+          <PrivateRoute path="/profile" component={Profile} user={user}/>
           <Route path="/signup" component={SignupForm} />
         </div>
       </Router>

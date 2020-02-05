@@ -73,7 +73,7 @@ const Ticket = props => {
       <p>Description: {props.ticket.description}</p>
       <p>What's been tried: {props.ticket.attemptedSolutions}</p>
       </div>
-      {props.ticket.solution && <p>Solution: {props.ticket.solution}</p>}
+      {props.ticket.solution != null && <p>Solution by {props.ticket.solution.answerer}: {props.ticket.solution.body}</p>}
       {/* button section should only appear if user is staff */}
       <div className="button-container">
         {props.userType === 'both' && (
