@@ -1,14 +1,18 @@
 //should have 'help student' button for employees but not students
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory, useLocation } from 'react-router-dom'
 import axiosWithAuth from "../../tools/axiosWithAuth";
 
 //comps
 import SolutionSubmitForm from "./SolutionSubmitForm";
 
-function Ticket(props) {
+const Ticket = props => {
   const [solving, setSolving] = useState(false);
-
+  let history = useHistory();
+  let location = useLocation();
+  console.log(location)
+  console.log('user is logged in as', props.userType)
   const claimTicket = e => {
     // needs to make put request and update the status prop of the item
     e.preventDefault();
@@ -17,6 +21,7 @@ function Ticket(props) {
       .put(`api/tickets/${e.target.id}`, reqBody)
       .then(res => {
         //needs to add itself to the user's staffTicket's array
+        history.push('/mytickets')
         console.log(res);
       })
       .catch(err => {
@@ -34,6 +39,7 @@ function Ticket(props) {
       .then(res => {
         //needs to add itself to the user's staffTicket's array
         console.log(res);
+        history.push('/dashboard')
       })
       .catch(err => {
         console.log(err);
@@ -51,8 +57,7 @@ function Ticket(props) {
       .delete(`api/tickets/${e.target.id}`)
       .then(res => {
         console.log(res)
-        props.setTickets(res.data)
-        // props.history.push('/dashboard')
+        history.push('/dashboard')
       })
       .catch(err => console.log(err))
   }
@@ -68,23 +73,48 @@ function Ticket(props) {
       <p>Description: {props.ticket.description}</p>
       <p>What's been tried: {props.ticket.attemptedSolutions}</p>
       </div>
-      {props.ticket.solutions && <p>Solution: {props.ticket.solutions}</p>}
+      {props.ticket.solution && <p>Solution: {props.ticket.solution}</p>}
       {/* button section should only appear if user is staff */}
       <div className="button-container">
-        <button id={props.ticket.id} onClick={deleteTicket}>
-          Delete{" "}
-        </button>
-        <button id={props.ticket.id} onClick={claimTicket}>
-          Claim
-        </button>
-        {/* unclaim and complete should only appear if ticket is claimed by current user */}
-        <button id={props.ticket.id} onClick={unclaimTicket}>
-          Unclaim
-        </button>
-        <button id={props.ticket.id} onClick={completeTicket}>
-          {" "}
-          Complete
-        </button>
+        {props.userType === 'both' && (
+          <>
+            <button id={props.ticket.id} onClick={deleteTicket}>
+            Delete{" "}
+            </button>
+            <button id={props.ticket.id} onClick={claimTicket}>
+              Claim
+            </button>
+            {location.pathname === '/mytickets' && (
+              <button id={props.ticket.id} onClick={unclaimTicket}>
+              Unclaim
+              </button>
+            )}
+            <button id={props.ticket.id} onClick={completeTicket}>
+              {" "}
+              Complete
+            </button>
+          </>
+        )}
+        {props.userType === 'staff' && (
+          <>
+            <button id={props.ticket.id} onClick={deleteTicket}>
+            Delete{" "}
+            </button>
+            <button id={props.ticket.id} onClick={claimTicket}>
+              Claim
+            </button>
+            {location.pathname === '/mytickets' && (
+              <button id={props.ticket.id} onClick={unclaimTicket}>
+              Unclaim
+              </button>
+            )}
+            <button id={props.ticket.id} onClick={completeTicket}>
+              {" "}
+              Complete
+            </button>
+          </>
+        )}
+        
       </div>
       {solving && (
         <SolutionSubmitForm ticket={props.ticket} setSolving={setSolving} />
