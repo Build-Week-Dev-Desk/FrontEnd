@@ -1,20 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import MyTicketsStaff from './MyTicketsStaff';
-import MyTicketsStudent from './MyTicketsStudent';
+import Ticket from './Ticket'
 
 import axiosWithAuth from "../../tools/axiosWithAuth";
 
 const MyTickets = props => {
-        const [state, setState] = useState({})
+        const [state, setState] = useState([])
     useEffect(() => {
         axiosWithAuth()
             .get('api/mytickets')
             .then(res=> {
                 console.log(res)
-                // setState(res.data)
+                setState(res.data)
             })
             .catch(err => console.log(err))
-    })
+    }, [])
 
 
 
@@ -63,16 +62,17 @@ const MyTickets = props => {
 
     return (
         <>
-            {/* {state.user.student && <MyTicketsStudent state={state} />}
-            {state.user.staff && <MyTicketsStaff state={state} />} */}
+           {state.map(ticket => (
+        <Ticket ticket={ticket} key={ticket.id}/>
+      ))}
         </>
     )
 }
 
 export default MyTickets;
 
-{/* if user is a student and they have studentTickets then render the studentTickets */}
-{/* {state.user.student && (state.user.studentTickets.length > 0) && <MyTicketsStudent/>} */}
+// {/* if user is a student and they have studentTickets then render the studentTickets */}
+// {/* {state.user.student && (state.user.studentTickets.length > 0) && <MyTicketsStudent/>} */}
 
-{/* if user is staff and they have stafftickets then render the stafftickets */}
-{/* {state.user.staff && (state.user.stafftickets.length > 0) && <MyTicketsStaff/>} */}
+// {/* if user is staff and they have stafftickets then render the stafftickets */}
+// {/* {state.user.staff && (state.user.stafftickets.length > 0) && <MyTicketsStaff/>} */}
