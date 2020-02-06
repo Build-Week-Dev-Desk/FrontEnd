@@ -17,6 +17,7 @@ import Profile from "./components/login/Profile";
 function App() {
   const [userType, setUserType] = useState();
   const [loggedIn, setLoggedIn] = useState();
+  const localUser = localStorage.getItem('user')
 
   const [user, setUser] = useState();
   useEffect(() => {
@@ -35,8 +36,8 @@ function App() {
     if (localStorage.getItem("id")) {
       setUser(localStorage.getItem("id"));
     }
-  }, [localStorage.getItem("user")]);
-
+  }, [localUser]);
+  
   // console.log('logged in', loggedIn)
 
   return (

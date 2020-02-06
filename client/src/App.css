@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 3%;
 }
 
 .entiretick {
@@ -91,6 +92,8 @@
   align-items: center;
   text-align: center;
   margin-top: 5vh;
+  margin-bottom: 5%;
+
 }
 
 link {
@@ -118,11 +121,15 @@ link {
   flex-direction: column;
 }
 
-.solution {
+.ticksolut {
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
   border-top: 2px dashed red;
+  color: red;
   padding-top: 2%;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .button-container {
@@ -163,6 +170,14 @@ p {
   margin-bottom: 3%;
 }
 
+.submitbtn1:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px 2px rgba(11, 53, 240, 0.12), 0 2px 3px 2px rgba(0, 0, 0, 0.24);
+  background: red;
+  color: white;
+  text-decoration: none;
+}
+
 .submitbtn1:active {
   background: #7ed321;
   box-shadow: inset 0px 0px 5px #7ed321;
@@ -181,6 +196,14 @@ p {
   align-items: center;
   margin: 0 auto;
   margin-bottom: 3%;
+}
+
+.submitbtn2:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px 2px rgba(11, 53, 240, 0.12), 0 2px 3px 2px rgba(0, 0, 0, 0.24);
+  background: black;
+  color: #7ED321;
+  text-decoration: none;
 }
 
 .submitbtn2:active {
@@ -205,6 +228,14 @@ p {
   margin-bottom: 3%;
 }
 
+.submitbtn3:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px 2px rgba(11, 53, 240, 0.12), 0 2px 3px 2px rgba(0, 0, 0, 0.24);
+  background: black;
+  color: #7ED321;
+  text-decoration: none;
+}
+
 .submitbtn3:active {
   background: #7ed321;
   box-shadow: inset 0px 0px 5px #7ed321;
@@ -227,8 +258,36 @@ p {
   margin-bottom: 3%;
 }
 
+.submitbtn4:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px 2px rgba(11, 53, 240, 0.12), 0 2px 3px 2px rgba(0, 0, 0, 0.24);
+  background: #7ED321;
+  color: black;
+  text-decoration: none;
+}
+
 .submitbtn4:active {
   background: #7ed321;
   box-shadow: inset 0px 0px 5px #7ed321;
   outline: none;
+}
+
+.proform {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #7ED321;
+  background-color: lightgray;
+  margin-top: 3%;
+  padding: 5%;
+  font-weight: bold;
+}
+
+.profileform {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.errors {
+  color: red;
 }

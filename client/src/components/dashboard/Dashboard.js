@@ -11,7 +11,6 @@ const Dashboard = props => {
     axiosWithAuth()
       .get("https://bwdevdesk.herokuapp.com/api/tickets")
       .then(res => {
-        console.log("im an axios call that actually happens and works");
         setTickets(res.data);
       })
       .catch(err => console.log(err));
@@ -30,8 +29,6 @@ const Dashboard = props => {
       </div>
       <div>
         {tickets.map(ticket => {
-          console.log(ticket);
-          console.log("dashboard user is logged in as", props.userType);
           return (
             <>
               <Ticket

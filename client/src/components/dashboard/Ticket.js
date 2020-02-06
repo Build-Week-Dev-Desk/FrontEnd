@@ -1,6 +1,5 @@
-//should have 'help student' button for employees but not students
+import React, { useState } from "react";
 
-import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import axiosWithAuth from "../../tools/axiosWithAuth";
 
@@ -11,8 +10,6 @@ const Ticket = props => {
   const [solving, setSolving] = useState(false);
   let history = useHistory();
   let location = useLocation();
-  console.log(location);
-  console.log("user is logged in as", props.userType);
   const claimTicket = e => {
     // needs to make put request and update the status prop of the item
     e.preventDefault();
@@ -49,20 +46,20 @@ const Ticket = props => {
   const completeTicket = e => {
     setSolving(true);
   };
-  // console.log(props.history)
   const deleteTicket = e => {
     e.preventDefault();
-    // console.log(e.target.id)
     axiosWithAuth()
       .delete(`api/tickets/${e.target.id}`)
       .then(res => {
-        console.log(res);
-        history.push("/dashboard");
+        if (location.pathname === "/dashboard") {
+          document.location.reload();
+        } else {
+          history.push("/dashboard");
+        }
       })
       .catch(err => console.log(err));
   };
   return (
-    // <div>I'm gonna be the ticket eventually</div>
     <div className="cards">
       <div id="usertick" className={props.ticket.status}>
         <div className="userticket">
@@ -74,7 +71,9 @@ const Ticket = props => {
           <p>What's been tried: {props.ticket.attemptedSolutions}</p>
         </div>
         {props.ticket.solution != null && (
-          <p>
+
+          <p className="ticksolut">
+
             Solution by {props.ticket.solution.answerer}:{" "}
             {props.ticket.solution.body}
           </p>
