@@ -9,7 +9,6 @@ const MyTickets = props => {
         axiosWithAuth()
             .get('api/mytickets')
             .then(res=> {
-                console.log(res)
                 setState(res.data)
             })
             .catch(err => console.log(err))
