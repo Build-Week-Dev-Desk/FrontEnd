@@ -81,8 +81,8 @@ function CreateTicketForm(props) {
               // onChange={handleChange}
               ref={register({ required: true })}
             />
-            {errors.name && errors.name.type === "required" && (
-              <p>This is required</p>
+            {errors.title && errors.title.type === "required" && (
+              <p className="errors">This is required</p>
             )}
           </div>
           <div className="ticket">
@@ -96,7 +96,7 @@ function CreateTicketForm(props) {
               ref={register({ required: true })}
             />
             {errors.description && errors.description.type === "required" && (
-              <p>This is required</p>
+              <p className="errors">This is required</p>
             )}
           </div>
           <div className="ticket">
@@ -111,7 +111,7 @@ function CreateTicketForm(props) {
               <option value="python">Python</option>
             </select>
             {errors.category && errors.category.type === "required" && (
-              <p>This is required</p>
+              <p className="errors">This is required</p>
             )}
           </div>
           <div className="ticket">
@@ -125,7 +125,7 @@ function CreateTicketForm(props) {
               ref={register({ required: true })}
             />
             {errors.solutions && errors.solutions.type === "required" && (
-              <p>This is required</p>
+              <p className="errors">This is required</p>
             )}
           </div>
           <input type="submit" className="submitbtn" />
