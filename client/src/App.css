@@ -7,7 +7,7 @@
 
 .entiretick {
   border: 2px solid #7ed321;
-  background-color: lightgray;
+  /* background-color: lightgray; */
   width: 90%;
   box-shadow: 10px 10px 5px grey;
 }
@@ -111,7 +111,7 @@ link {
   border: 3px solid #7ed321;
   margin: 3% 0 3% 0;
   padding: 10px;
-  background-color: lightgray;
+  /* background-color: lightgray; */
   box-shadow: 10px 10px 5px grey;
   width: 90%;
 }
@@ -290,4 +290,13 @@ p {
 
 .errors {
   color: red;
+}
+.claimed{
+  background-color: #FFFFBF;
+}
+.open{
+  background-color: #ffcccb;
+}
+.closed{
+  background-color: #98fb98;
 }

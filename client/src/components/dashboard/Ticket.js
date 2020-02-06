@@ -84,37 +84,43 @@ const Ticket = props => {
             <>
               <button
                 id={props.ticket.id}
-                className="submitbtn1 red"
+                className="submitbtn1"
                 onClick={deleteTicket}
               >
                 Delete{" "}
               </button>
-              <button
-                id={props.ticket.id}
-                className="submitbtn2 green"
-                onClick={claimTicket}
-              >
-                Claim
-              </button>
-              {location.pathname === "/mytickets" && (
+              {props.ticket.status === "open" && (
                 <button
                   id={props.ticket.id}
-                  className="submitbtn3 green"
-                  onClick={unclaimTicket}
+                  className="submitbtn2"
+                  onClick={claimTicket}
                 >
-                  Unclaim
+                  Claim
                 </button>
               )}
-              <button
-                id={props.ticket.id}
-                className="submitbtn4"
-                onClick={completeTicket}
-              >
-                {" "}
-                Complete
-              </button>
-            </>
-          )}
+              {location.pathname === "/mytickets" && (
+                <>
+                  <button
+                    id={props.ticket.id}
+                    className="submitbtn3"
+                    onClick={unclaimTicket}
+                  >
+                    Unclaim
+                  </button>
+                  <button
+                  id={props.ticket.id}
+                  className="submitbtn4"
+                  onClick={completeTicket}
+                >
+                  {" "}
+                  Complete
+                </button>
+                </>
+              )}
+              
+               </>
+            )}
+           
           {props.userType === "staff" && (
             <>
               <button
@@ -124,32 +130,37 @@ const Ticket = props => {
               >
                 Delete{" "}
               </button>
-              <button
-                id={props.ticket.id}
-                className="submitbtn2"
-                onClick={claimTicket}
-              >
-                Claim
-              </button>
-              {location.pathname === "/mytickets" && (
+              {props.ticket.status === "open" && (
                 <button
                   id={props.ticket.id}
-                  className="submitbtn3"
-                  onClick={unclaimTicket}
+                  className="submitbtn2"
+                  onClick={claimTicket}
                 >
-                  Unclaim
+                  Claim
                 </button>
               )}
-              <button
-                id={props.ticket.id}
-                className="submitbtn4"
-                onClick={completeTicket}
-              >
-                {" "}
-                Complete
-              </button>
-            </>
-          )}
+              {location.pathname === "/mytickets" && (
+                <>
+                  <button
+                    id={props.ticket.id}
+                    className="submitbtn3"
+                    onClick={unclaimTicket}
+                  >
+                    Unclaim
+                  </button>
+                   <button
+                  id={props.ticket.id}
+                  className="submitbtn4"
+                  onClick={completeTicket}
+                >
+                  {" "}
+                  Complete
+                </button>
+                </>
+              )}
+             
+               </>
+            )}
         </div>
         {solving && (
           <SolutionSubmitForm ticket={props.ticket} setSolving={setSolving} />
