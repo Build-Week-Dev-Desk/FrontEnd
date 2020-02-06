@@ -51,10 +51,13 @@ const LoginForm = props => {
           </select>
         </label>
         <div>
-          <input className="submitbtn" type="submit" />
-          <Link className="submitbtn" to="/signup">
+          <button className="submitbtn green">Submit</button>
+          <button
+            className="submitbtn green"
+            onClick={() => props.history.push("/signup")}
+          >
             Sign Up
-          </Link>
+          </button>
         </div>
       </form>
     </div>
