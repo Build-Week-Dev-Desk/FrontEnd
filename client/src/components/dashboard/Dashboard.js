@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../../tools/axiosWithAuth";
-import { Link } from "react-router-dom";
 
 //components
 import Ticket from "./Ticket";

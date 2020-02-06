@@ -57,6 +57,9 @@ const Profile = props => {
             <option value="both">Both</option>
           </select>
           <input className="submitbtn" type="submit" />
+          <button onClick={()=> {
+            setEditing(false);
+          }}>Cancel</button>
           </form>
           </div>
           </div>) : (<div className="profileform">
@@ -64,9 +67,9 @@ const Profile = props => {
           <div className="proform">
           <h2>Name: {profile.name}</h2>
           <h2>Email: {profile.email}</h2>
-          {profile.role == "student" && <div>I'm a Student</div>}
-          {profile.role == "staff" && <div>I'm a Staff Member</div>}
-          {profile.role == "both" && (
+          {profile.role === "student" && <div>I'm a Student</div>}
+          {profile.role === "staff" && <div>I'm a Staff Member</div>}
+          {profile.role === "both" && (
             <div>I'm both a Staff Member and Student</div>
           )}
           <button className="submitbtn" onClick={() => {setEditing(true)}}>Edit Profile</button>
