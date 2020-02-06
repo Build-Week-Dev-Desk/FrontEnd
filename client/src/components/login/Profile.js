@@ -19,17 +19,15 @@ const Profile = props => {
   }, [props.user]);
 
   const onSubmit = data => {
-      axiosWithAuth()
+    axiosWithAuth()
       .put(`/api/users/${props.user}`, data)
       .then(res => {
-          console.log(res)
-          setEditing(false)
-          setProfile(res.data[0]);
+        console.log(res);
+        setEditing(false);
+        setProfile(res.data[0]);
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   };
-
-
   return (editing ? (
         <div className="profileform">
           <h1 className="dashb">Profile</h1>
@@ -74,11 +72,6 @@ const Profile = props => {
           <button className="submitbtn" onClick={() => {setEditing(true)}}>Edit Profile</button>
         </div>
         </div>));
-        
 };
 
 export default Profile;
-
-
-
-
