@@ -30,10 +30,13 @@ const Profile = props => {
   };
 
 
-  return (editing ? (<form onSubmit={handleSubmit(onSubmit)} className="tickform">
+  return (editing ? (
+        <div className="profileform">
           <h1 className="dashb">Profile</h1>
+          <div className="proform">
+          <form onSubmit={handleSubmit(onSubmit)} >
           <label>
-            Name:
+            <h3>Name:</h3>          
             <input
               type="text"
               placeholder={profile.name}
@@ -42,7 +45,7 @@ const Profile = props => {
             />
           </label>
           <label>
-            Email:
+            <h3>Email:</h3>            
             <input
               type="text"
               placeholder={profile.email}
@@ -55,9 +58,12 @@ const Profile = props => {
             <option value="staff">Staff</option>
             <option value="both">Both</option>
           </select>
-          <input type="submit" />
-        </form>) : (<div>
+          <input className="submitbtn" type="submit" />
+          </form>
+          </div>
+          </div>) : (<div className="profileform">
           <h1 className="dashb">Profile</h1>
+          <div className="proform">
           <h2>Name: {profile.name}</h2>
           <h2>Email: {profile.email}</h2>
           {profile.role == "student" && <div>I'm a Student</div>}
@@ -65,8 +71,10 @@ const Profile = props => {
           {profile.role == "both" && (
             <div>I'm both a Staff Member and Student</div>
           )}
-          <button onClick={() => {setEditing(true)}}>Edit Profile</button>
+          <button className="submitbtn" onClick={() => {setEditing(true)}}>Edit Profile</button>
+        </div>
         </div>));
+        
 };
 
 export default Profile;

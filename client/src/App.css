@@ -289,6 +289,7 @@ p {
 .proform {
   display: flex;
   flex-direction: column;
+  align-items:center;
   border: 2px solid #7ED321;
   background-color: lightgray;
   margin-top: 3%;
@@ -297,7 +298,7 @@ p {
 }
 
 .profileform {
-    display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
