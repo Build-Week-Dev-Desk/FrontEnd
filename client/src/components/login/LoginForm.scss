@@ -1,0 +1,22 @@
+div.loginpage {
+  form {
+    padding: 1rem;
+    * {
+      width: 100%;
+    }
+    label {
+      text-align: left;
+      input {
+        padding: 0.5rem;
+      }
+    }
+    > div {
+      margin-top: 1rem;
+      .submitbtn {
+        width: 40%;
+        display: inline-block;
+        margin: 0.5rem;
+      }
+    }
+  }
+}

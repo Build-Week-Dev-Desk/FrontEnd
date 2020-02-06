@@ -1,10 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { useForm } from 'react-hook-form';
+
+import React from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useForm } from "react-hook-form";
+import "./LoginForm.scss";
+
 
 const LoginForm = props => {
-
     const { register, handleSubmit, errors } = useForm()
     const onSubmit = data => {
         axios
@@ -39,11 +41,13 @@ const LoginForm = props => {
                 </select>
                 {errors.role && errors.role.type === "required" && (<p className="errors">Role is required</p>)}
             </label>
-            <input className="submitbtn" type="submit" />
-            <Link className="submitbtn" to="/signup">Sign Up</Link>
+            <input className="submitbtn green" type="submit" />
+            <Link className="submitbtn green" to="/signup">Sign Up</Link>
         </form>
         </div>
-    );
-}
+      </form>
+    </div>
+  );
+};
 
 export default LoginForm;

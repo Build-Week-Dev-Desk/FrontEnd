@@ -1,6 +1,5 @@
-//should have 'help student' button for employees but not students
-
 import React, { useState } from "react";
+
 import { useHistory, useLocation } from "react-router-dom";
 import axiosWithAuth from "../../tools/axiosWithAuth";
 
@@ -11,7 +10,6 @@ const Ticket = props => {
   const [solving, setSolving] = useState(false);
   let history = useHistory();
   let location = useLocation();
-
   const claimTicket = e => {
     // needs to make put request and update the status prop of the item
     e.preventDefault();
@@ -73,7 +71,9 @@ const Ticket = props => {
           <p>What's been tried: {props.ticket.attemptedSolutions}</p>
         </div>
         {props.ticket.solution != null && (
+
           <p className="ticksolut">
+
             Solution by {props.ticket.solution.answerer}:{" "}
             {props.ticket.solution.body}
           </p>
@@ -84,24 +84,22 @@ const Ticket = props => {
             <>
               <button
                 id={props.ticket.id}
-                className="submitbtn1"
+                className="submitbtn1 red"
                 onClick={deleteTicket}
               >
                 Delete{" "}
               </button>
-              {props.ticket.status === "open" && (
-                <button
-                  id={props.ticket.id}
-                  className="submitbtn2"
-                  onClick={claimTicket}
-                >
-                  Claim
-                </button>
-              )}
+              <button
+                id={props.ticket.id}
+                className="submitbtn2 green"
+                onClick={claimTicket}
+              >
+                Claim
+              </button>
               {location.pathname === "/mytickets" && (
                 <button
                   id={props.ticket.id}
-                  className="submitbtn3"
+                  className="submitbtn3 green"
                   onClick={unclaimTicket}
                 >
                   Unclaim
@@ -126,34 +124,30 @@ const Ticket = props => {
               >
                 Delete{" "}
               </button>
-              {props.ticket.status === "open" && (
+              <button
+                id={props.ticket.id}
+                className="submitbtn2"
+                onClick={claimTicket}
+              >
+                Claim
+              </button>
+              {location.pathname === "/mytickets" && (
                 <button
                   id={props.ticket.id}
-                  className="submitbtn2"
-                  onClick={claimTicket}
+                  className="submitbtn3"
+                  onClick={unclaimTicket}
                 >
-                  Claim
+                  Unclaim
                 </button>
               )}
-              {location.pathname === "/mytickets" && (
-                <>
-                  <button
-                    id={props.ticket.id}
-                    className="submitbtn3"
-                    onClick={unclaimTicket}
-                  >
-                    Unclaim
-                  </button>{" "}
-                  <button
-                    id={props.ticket.id}
-                    className="submitbtn4"
-                    onClick={completeTicket}
-                  >
-                    {" "}
-                    Complete
-                  </button>
-                </>
-              )}
+              <button
+                id={props.ticket.id}
+                className="submitbtn4"
+                onClick={completeTicket}
+              >
+                {" "}
+                Complete
+              </button>
             </>
           )}
         </div>
