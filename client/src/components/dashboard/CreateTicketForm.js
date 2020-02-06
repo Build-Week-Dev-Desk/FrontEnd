@@ -1,24 +1,3 @@
-//only appears for students
-
-//sample state
-
-// tickets: [{
-//         id: num,
-//         title: 'string',
-//         status: 'one of [open, claimed, resolved]',
-//         description: 'string',
-//         attemptedSolutions: "",
-//         category: 'one of [html, css, javascript, python]',
-//         asker: user.name,
-//         timeCreated: date,
-//         solution: {
-//             timeCreated: date,
-//             body: 'string'
-//             answerer: user.name
-//         }
-//     }]
-//work on this with Seth
-
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import axiosWithAuth from "../../tools/axiosWithAuth";
@@ -27,25 +6,11 @@ function CreateTicketForm(props) {
   const { register, handleSubmit, errors } = useForm();
   const [newTicket, setNewTicket] = useState({});
 
-  // const handleSubmit = () => {
-  //     console.log(newTicket);
-  //     // setup axios post call
-  //     // redirect to dashboard or myticketstudent
-  // }
-
-  // const handleChange = e => {
-  //     setNewTicket({
-  //         ...newTicket,
-  //         [e.target.name]: e.target.value
-  //     })
-  // }
-
   const onSubmit = data => {
     setNewTicket({
       ...data,
       status: "open"
     });
-    // console.log("im in between", newTicket);
     props.history.push('/dashboard')
   };
 
@@ -62,8 +27,6 @@ function CreateTicketForm(props) {
     }
   }, [newTicket]);
 
-  // console.log(newTicket)
-
   return (
     <div className="tickform">
       <h1 className="dashb">Create New Ticket</h1>
@@ -78,7 +41,6 @@ function CreateTicketForm(props) {
               id="title"
               type="text"
               name="title"
-              // onChange={handleChange}
               ref={register({ required: true })}
             />
             {errors.title && errors.title.type === "required" && (
@@ -92,7 +54,6 @@ function CreateTicketForm(props) {
             <textarea
               id="description"
               name="description"
-              // onChange={handleChange}
               ref={register({ required: true })}
             />
             {errors.description && errors.description.type === "required" && (
@@ -121,7 +82,6 @@ function CreateTicketForm(props) {
             <textarea
               id="attemptedSolutions"
               name="attemptedSolutions"
-              // onChange={handleChange}
               ref={register({ required: true })}
             />
             {errors.solutions && errors.solutions.type === "required" && (
