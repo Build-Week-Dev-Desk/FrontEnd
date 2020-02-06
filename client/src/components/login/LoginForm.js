@@ -45,8 +45,6 @@ const LoginForm = props => {
             <Link className="submitbtn green" to="/signup">Sign Up</Link>
         </form>
         </div>
-      </form>
-    </div>
   );
 };
 
