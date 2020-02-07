@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import axiosWithAuth from "../../tools/axiosWithAuth";
+import "./CreateTicketForm.scss";
 
 function CreateTicketForm(props) {
   const { register, handleSubmit, errors } = useForm();
@@ -11,7 +12,7 @@ function CreateTicketForm(props) {
       ...data,
       status: "open"
     });
-    props.history.push('/dashboard')
+    props.history.push("/dashboard");
   };
 
   useEffect(() => {
@@ -91,7 +92,9 @@ function CreateTicketForm(props) {
                 <p>This is required</p>
               )}
             </div>
-            <button className="submitbtn green">Submit</button>
+            <button id="create-ticket" className="btn btn-primary">
+              Submit
+            </button>
           </form>
         </div>
       </div>
