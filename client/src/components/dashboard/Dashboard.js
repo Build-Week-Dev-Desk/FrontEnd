@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../../tools/axiosWithAuth";
 
 //components
@@ -32,13 +32,12 @@ const Dashboard = props => {
       <div>
         {tickets.map(ticket => {
           return (
-            <Fragment key={ticket.id}>
-              <Ticket
-                ticket={ticket}
-                setTickets={setTickets}
-                userType={props.userType}
-              />
-            </Fragment>
+            <Ticket
+              key={ticket.id}
+              ticket={ticket}
+              setTickets={setTickets}
+              userType={props.userType}
+            />
           );
         })}
       </div>
