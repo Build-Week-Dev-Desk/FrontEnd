@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import axiosWithAuth from "../../tools/axiosWithAuth";
 
 //components
 import Ticket from "./Ticket";
+
+import "./Dashboard.scss";
 
 const Dashboard = props => {
   const [tickets, setTickets] = useState([]);
@@ -16,11 +18,12 @@ const Dashboard = props => {
   }, [setTickets]);
 
   return (
-    <div>
+    <div className="dashboard">
       <h1 className="dashb">Dashboard</h1>
       <div className="subnav">
         <button
-          className="navcreate green"
+          id="create-ticket"
+          className="btn btn-primary"
           onClick={() => props.history.push("/createticket")}
         >
           Create New Ticket
@@ -29,14 +32,13 @@ const Dashboard = props => {
       <div>
         {tickets.map(ticket => {
           return (
-            <>
+            <Fragment key={ticket.id}>
               <Ticket
                 ticket={ticket}
                 setTickets={setTickets}
                 userType={props.userType}
-                key={ticket.id}
               />
-            </>
+            </Fragment>
           );
         })}
       </div>
