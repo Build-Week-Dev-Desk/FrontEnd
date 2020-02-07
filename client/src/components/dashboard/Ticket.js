@@ -71,9 +71,7 @@ const Ticket = props => {
           <p>What's been tried: {props.ticket.attemptedSolutions}</p>
         </div>
         {props.ticket.solution != null && (
-
           <p className="ticksolut">
-
             Solution by {props.ticket.solution.answerer}:{" "}
             {props.ticket.solution.body}
           </p>
@@ -84,7 +82,7 @@ const Ticket = props => {
             <>
               <button
                 id={props.ticket.id}
-                className="submitbtn1"
+                className="btn btn-danger"
                 onClick={deleteTicket}
               >
                 Delete{" "}
@@ -92,7 +90,7 @@ const Ticket = props => {
               {props.ticket.status === "open" && (
                 <button
                   id={props.ticket.id}
-                  className="submitbtn2"
+                  className="btn btn-primary"
                   onClick={claimTicket}
                 >
                   Claim
@@ -102,30 +100,29 @@ const Ticket = props => {
                 <>
                   <button
                     id={props.ticket.id}
-                    className="submitbtn3"
+                    className="btn btn-secondary"
                     onClick={unclaimTicket}
                   >
                     Unclaim
                   </button>
                   <button
-                  id={props.ticket.id}
-                  className="submitbtn4"
-                  onClick={completeTicket}
-                >
-                  {" "}
-                  Complete
-                </button>
+                    id={props.ticket.id}
+                    className="btn btn-success"
+                    onClick={completeTicket}
+                  >
+                    {" "}
+                    Complete
+                  </button>
                 </>
               )}
-              
-               </>
-            )}
-           
+            </>
+          )}
+
           {props.userType === "staff" && (
             <>
               <button
                 id={props.ticket.id}
-                className="submitbtn1"
+                className="btn btn-danger"
                 onClick={deleteTicket}
               >
                 Delete{" "}
@@ -133,7 +130,7 @@ const Ticket = props => {
               {props.ticket.status === "open" && (
                 <button
                   id={props.ticket.id}
-                  className="submitbtn2"
+                  className="btn btn-primary"
                   onClick={claimTicket}
                 >
                   Claim
@@ -143,24 +140,23 @@ const Ticket = props => {
                 <>
                   <button
                     id={props.ticket.id}
-                    className="submitbtn3"
+                    className="btn btn-secondary"
                     onClick={unclaimTicket}
                   >
                     Unclaim
                   </button>
-                   <button
-                  id={props.ticket.id}
-                  className="submitbtn4"
-                  onClick={completeTicket}
-                >
-                  {" "}
-                  Complete
-                </button>
+                  <button
+                    id={props.ticket.id}
+                    className="btn btn-success"
+                    onClick={completeTicket}
+                  >
+                    {" "}
+                    Complete
+                  </button>
                 </>
               )}
-             
-               </>
-            )}
+            </>
+          )}
         </div>
         {solving && (
           <SolutionSubmitForm ticket={props.ticket} setSolving={setSolving} />
